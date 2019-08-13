@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HelloWorldNetFx.Properties
+namespace WPF.AutoUpdate.Test.NetFx.Properties
 {
 
 

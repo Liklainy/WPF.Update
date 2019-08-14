@@ -1,5 +1,6 @@
-﻿using System.Diagnostics;
+﻿using System;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace WPF.Update.Common
 {
@@ -12,12 +13,17 @@ namespace WPF.Update.Common
 
         private void ButtonCheckForUpdate_Click(object sender, RoutedEventArgs e)
         {
-            Trace.WriteLine("AutoUpdater ButtonCheckForUpdate_Click");
+            AutoUpdaterDotNET.AutoUpdater.Start($"{UpdateUrl}/release.xml");
         }
 
         private void ButtonRunAutoUpdater_Click(object sender, RoutedEventArgs e)
         {
-            Trace.WriteLine("AutoUpdater ButtonRunAutoUpdater_Click");
+            DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromMinutes(5) };
+            timer.Tick += delegate
+            {
+                AutoUpdaterDotNET.AutoUpdater.Start($"{UpdateUrl}/release.xml");
+            };
+            timer.Start();
         }
     }
 }

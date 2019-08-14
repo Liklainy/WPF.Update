@@ -1,13 +1,11 @@
-#tool nuget:?package=Squirrel.Windows
-#addin nuget:?package=Cake.Squirrel
+#tool "nsis"
 
 var target = Argument("target", "Publish");
 var configuration = Argument("configuration", "Release");
 var version = Argument<string>("buildVersion", null);
 
 var projectDir = "NetFx";
-var projectPath = $"{projectDir}/WPF.Update.Squirrel.NetFx.csproj";
-var assemblyName = "WPF.Update.Squirrel.NetFx";
+var projectPath = $"{projectDir}/WPF.Update.AutoUpdater.NetFx.csproj";
     
 Task("Clean")
     .Does(() =>
@@ -47,20 +45,27 @@ Task("Package")
         OutputDirectory         = $"{projectDir}/bin/{configuration}"
     };
 
-    NuGetPack($"{projectDir}/WPF.Update.Squirrel.NetFx.nuspec", nuGetPackSettings);
+    NuGetPack($"{projectDir}/WPF.Update.AutoUpdater.NetFx.nuspec", nuGetPackSettings);
+});
+
+Task("Installer")
+    .IsDependentOn("Build")
+    .Does(() =>
+{
+    MakeNSIS("build_installer.nsi", new MakeNSISSettings
+    {
+        Defines = new Dictionary<string, string>
+        {
+            { "PRODUCT_VERSION", version }
+        }
+    });
 });
 
 Task("Publish")
-    .IsDependentOn("Package")
+    .IsDependentOn("Build")
     .Does(() =>
 {
-    var nupgk = File($"{projectDir}/bin/{configuration}/{assemblyName}.{version}.nupkg");
-    Information($"Publish: {nupgk}");
-    var settings = new SquirrelSettings
-    {
-        ReleaseDirectory = $"../Build/Squirrel"
-    };
-    Squirrel(nupgk, settings);
+    Zip($"{projectDir}/bin/{configuration}/net472", $"../Build/AutoUpdater/release.zip");
 });
 
 

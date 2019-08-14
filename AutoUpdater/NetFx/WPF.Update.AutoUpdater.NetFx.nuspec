@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>WPF.Update.AutoUpdater.NetFx</id>
+    <title>WPF.Update.AutoUpdater.NetFx</title>
+    <version>0.0.0</version>
+    <authors>Liklainy</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Testing AutoUpdater for WPF</description>
+  </metadata>
+  <files>
+    <file src="*.*" target="lib\net472\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+  </files>
+</package>

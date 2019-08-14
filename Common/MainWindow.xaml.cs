@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Windows;
 
 namespace WPF.Update.Common
@@ -8,9 +9,12 @@ namespace WPF.Update.Common
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string UpdateUrl => "http://localhost:8000";
+
         public MainWindow()
         {
             InitializeComponent();
+            Initialize();
         }
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
@@ -18,19 +22,9 @@ namespace WPF.Update.Common
             Application.Current.Shutdown();
         }
 
-        private void ButtonCheckForUpdate_Click(object sender, RoutedEventArgs e)
-        {
-            // ToDo
-        }
-
-        private void ButtonRunAutoUpdater_Click(object sender, RoutedEventArgs e)
-        {
-            // ToDo
-        }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            label.Content = $"Version: {GetType().Assembly.GetName().Version}\n" +
+            label.Content = $"Version: {Assembly.GetEntryAssembly().GetName().Version}\n" +
                 $"{RuntimeInformation.FrameworkDescription}";
         }
     }

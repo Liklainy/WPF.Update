@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WPF.Update.Common.NetFx.Properties
+namespace WPF.Update.AutoUpdater.NetFx.Properties
 {
 
 

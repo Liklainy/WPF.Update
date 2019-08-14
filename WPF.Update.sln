@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29123.89
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF.Update.Common.Core", "Common\WPF.Update.Common.Core\WPF.Update.Common.Core.csproj", "{CD924B8F-2B24-4DB8-8FCC-4D50744EE3BE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Squirrel", "Squirrel", "{6B2EE291-4497-4504-8EE1-BF5C63B50E53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.Update.Common.NetFx", "Common\WPF.Update.Common.NetFx\WPF.Update.Common.NetFx.csproj", "{A754E786-D71E-48EB-A44E-099F28D3A177}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF.Update.Squirrel.NetFx", "Squirrel\NetFx\WPF.Update.Squirrel.NetFx.csproj", "{A754E786-D71E-48EB-A44E-099F28D3A177}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AutoUpdater", "AutoUpdater", "{59CA27D9-09A7-4893-9723-D8630C214C53}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF.Update.AutoUpdater.NetFx", "AutoUpdater\NetFx\WPF.Update.AutoUpdater.NetFx.csproj", "{89FA16AA-CFBF-4FFE-AF96-DD90C242AACD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,17 +17,21 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CD924B8F-2B24-4DB8-8FCC-4D50744EE3BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CD924B8F-2B24-4DB8-8FCC-4D50744EE3BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CD924B8F-2B24-4DB8-8FCC-4D50744EE3BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CD924B8F-2B24-4DB8-8FCC-4D50744EE3BE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A754E786-D71E-48EB-A44E-099F28D3A177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A754E786-D71E-48EB-A44E-099F28D3A177}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A754E786-D71E-48EB-A44E-099F28D3A177}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A754E786-D71E-48EB-A44E-099F28D3A177}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89FA16AA-CFBF-4FFE-AF96-DD90C242AACD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89FA16AA-CFBF-4FFE-AF96-DD90C242AACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89FA16AA-CFBF-4FFE-AF96-DD90C242AACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89FA16AA-CFBF-4FFE-AF96-DD90C242AACD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A754E786-D71E-48EB-A44E-099F28D3A177} = {6B2EE291-4497-4504-8EE1-BF5C63B50E53}
+		{89FA16AA-CFBF-4FFE-AF96-DD90C242AACD} = {59CA27D9-09A7-4893-9723-D8630C214C53}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F4788216-D0CA-423A-9A11-70F7DA548D78}

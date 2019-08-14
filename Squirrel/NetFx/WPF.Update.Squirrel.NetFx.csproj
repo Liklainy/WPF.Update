@@ -3,12 +3,12 @@
     <LanguageTargets>$(MSBuildToolsPath)\Microsoft.CSharp.targets</LanguageTargets>
     <TargetFramework>net472</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WPF.Update.Common.NetFx</RootNamespace>
-    <AssemblyName>WPF.Update.Common.NetFx</AssemblyName>
-    <AssemblyTitle>WPF.Update.Common.NetFx</AssemblyTitle>
-    <AssemblyProduct>WPF.Update.Common.NetFx</AssemblyProduct>
+    <RootNamespace>WPF.Update.AutoUpdater.NetFx</RootNamespace>
+    <AssemblyName>WPF.Update.AutoUpdater.NetFx</AssemblyName>
+    <AssemblyTitle>WPF.Update.AutoUpdater.NetFx</AssemblyTitle>
+    <AssemblyProduct>WPF.Update.AutoUpdater.NetFx</AssemblyProduct>
     <AssemblyCopyright>Copyright © 2019</AssemblyCopyright>
-    <ApplicationIcon>..\..\favicon.ico</ApplicationIcon>
+    <ApplicationIcon>..\..\Common\favicon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,12 +27,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include="**\*.xaml" SubType="Designer" Generator="MSBuild:UpdateDesignTimeXaml" Exclude="App.xaml" />
-    <Compile Update="**\*.xaml.cs" SubType="Code" DependentUpon="%(Filename)" />
+    <ApplicationDefinition Include="..\..\Common\App.xaml" Link="App.xaml" />
+    <Compile Include="..\..\Common\App.xaml.cs" Link="App.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="..\..\Common\MainWindow.xaml" Link="MainWindow.xaml" />
+    <Compile Include="..\..\Common\MainWindow.xaml.cs" Link="MainWindow.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="squirrel.windows" Version="1.9.1" />
   </ItemGroup>
 
 </Project>

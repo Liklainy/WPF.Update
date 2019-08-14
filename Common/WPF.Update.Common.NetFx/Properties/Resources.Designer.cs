@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WPF.AutoUpdate.Test.NetFx.Properties
+namespace WPF.Update.Common.NetFx.Properties
 {
 
 
@@ -44,7 +44,7 @@ namespace WPF.AutoUpdate.Test.NetFx.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WPF.AutoUpdate.Test.NetFx.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WPF.Update.Common.NetFx.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

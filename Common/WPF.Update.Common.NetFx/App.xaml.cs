@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace WPF.AutoUpdate.Test
+namespace WPF.Update.Common
 {
     /// <summary>
     /// Interaction logic for App.xaml

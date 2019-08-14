@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using System.Windows;
 
-namespace WPF.AutoUpdate.Test
+namespace WPF.Update.Common
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -18,9 +18,20 @@ namespace WPF.AutoUpdate.Test
             Application.Current.Shutdown();
         }
 
+        private void ButtonCheckForUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            // ToDo
+        }
+
+        private void ButtonRunAutoUpdater_Click(object sender, RoutedEventArgs e)
+        {
+            // ToDo
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            label1.Content += RuntimeInformation.FrameworkDescription;
+            label.Content = $"Version: {GetType().Assembly.GetName().Version}\n" +
+                $"{RuntimeInformation.FrameworkDescription}";
         }
     }
 }

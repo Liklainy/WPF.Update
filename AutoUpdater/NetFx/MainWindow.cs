@@ -13,7 +13,7 @@ namespace WPF.Update.Common
 
         private void ButtonCheckForUpdate_Click(object sender, RoutedEventArgs e)
         {
-            AutoUpdaterDotNET.AutoUpdater.Start($"{UpdateUrl}/release.xml");
+            Update();
         }
 
         private void ButtonRunAutoUpdater_Click(object sender, RoutedEventArgs e)
@@ -21,9 +21,14 @@ namespace WPF.Update.Common
             DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromMinutes(5) };
             timer.Tick += delegate
             {
-                AutoUpdaterDotNET.AutoUpdater.Start($"{UpdateUrl}/release.xml");
+                Update();
             };
             timer.Start();
+        }
+
+        private void Update()
+        {
+            AutoUpdaterDotNET.AutoUpdater.Start($"{UpdateUrl}/AutoUpdater/release.xml");
         }
     }
 }

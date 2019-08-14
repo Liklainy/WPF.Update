@@ -65,7 +65,19 @@ Task("Publish")
     .IsDependentOn("Build")
     .Does(() =>
 {
-    Zip($"{projectDir}/bin/{configuration}/net472", $"../Build/AutoUpdater/release.zip");
+    Zip($"{projectDir}/bin/{configuration}/net472", "../Build/AutoUpdater/release.zip");
+    
+    CopyFile("release.xml", "../Build/AutoUpdater/release.xml");
+    var settings = new XmlPokeSettings
+    {
+        Namespaces = new Dictionary<string, string> 
+        {
+            {"android", "http://schemas.android.com/apk/res/android"}
+        }
+    };
+
+    XmlPoke("../Build/AutoUpdater/release.xml",
+        "/item/version", version, settings);
 });
 
 

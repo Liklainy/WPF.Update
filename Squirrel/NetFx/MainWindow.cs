@@ -19,6 +19,12 @@ namespace WPF.Update.Common
             var url = $"{UpdateUrl}/Squirrel";
             _currentVersion = Assembly.GetEntryAssembly().GetName().Version.ToString();
             _updateManager = new UpdateManager(url, urlDownloader: new FileDownloader());
+
+            SquirrelAwareApp.HandleEvents(
+                onInitialInstall: v => _updateManager.CreateShortcutForThisExe(),
+                onAppUpdate: v => _updateManager.CreateShortcutForThisExe(),
+                onAppUninstall: v => _updateManager.RemoveShortcutForThisExe()
+            );
         }
 
         private void ButtonCheckForUpdate_Click(object sender, RoutedEventArgs e)
@@ -45,26 +51,30 @@ namespace WPF.Update.Common
         {
             try
             {
-                var update = await _updateManager.CheckForUpdate(false, null);
+                ShowMessage($"Checking new versions...");
+                var update = await _updateManager.CheckForUpdate(false, x => ShowMessage($"Checking updates: {x}%"));
                 try
                 {
                     var semanticVersion = update.CurrentlyInstalledVersion?.Version ?? new SemanticVersion(0, 0, 0, 0);
                     var version = update.FutureReleaseEntry.Version;
                     if (semanticVersion < version)
                     {
-                        Trace.TraceInformation($"[{_currentVersion}]: Updating to [{version}]...");
-                        await _updateManager.DownloadReleases(update.ReleasesToApply, null);
-                        await _updateManager.ApplyReleases(update, null);
+                        ShowMessage($"Updating to [{version}]...");
+                        await _updateManager.DownloadReleases(update.ReleasesToApply, x => ShowMessage($"Download update: {x}%"));
+                        await _updateManager.ApplyReleases(update, x => ShowMessage($"Applying update: {x}%"));
+                        ShowMessage($"Done update to [{version}]");
                     }
+                    else
+                        ShowMessage("The latest version is installed");
                 }
                 catch (Exception ex)
                 {
-                    Trace.TraceError($"[{_currentVersion}]: Fail updating - {ex}");
+                    ShowMessage($"[{_currentVersion}]: Fail updating - {ex.Message}");
                 }
             }
             catch (Exception ex)
             {
-                Trace.TraceError($"[{_currentVersion}]: Can't check for update - {ex}");
+                ShowMessage($"[{_currentVersion}]: Can't check for update - {ex.Message}");
             }
         }
     }

@@ -11,7 +11,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
-            <RowDefinition Height="8*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="7*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
@@ -29,12 +30,18 @@
                     Click="ButtonRunAutoUpdater_Click" />
         </Grid>
         <Label Grid.Row="1"
+               x:Name="progress"
+               Content=""
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               FontSize="20" />
+        <Label Grid.Row="2"
                x:Name="label"
                Content="Hello World"
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
                FontSize="40" />
-        <Button Grid.Row="2"
+        <Button Grid.Row="3"
                 Content="Exit"
                 FontSize="20"
                 Click="ButtonExit_Click" />

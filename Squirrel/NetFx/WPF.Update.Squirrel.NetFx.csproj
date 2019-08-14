@@ -3,13 +3,20 @@
     <LanguageTargets>$(MSBuildToolsPath)\Microsoft.CSharp.targets</LanguageTargets>
     <TargetFramework>net472</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WPF.Update.AutoUpdater.NetFx</RootNamespace>
-    <AssemblyName>WPF.Update.AutoUpdater.NetFx</AssemblyName>
-    <AssemblyTitle>WPF.Update.AutoUpdater.NetFx</AssemblyTitle>
-    <AssemblyProduct>WPF.Update.AutoUpdater.NetFx</AssemblyProduct>
+    <RootNamespace>WPF.Update.Squirrel.NetFx</RootNamespace>
+    <AssemblyName>WPF.Update.Squirrel.NetFx</AssemblyName>
+    <AssemblyTitle>WPF.Update.Squirrel.NetFx</AssemblyTitle>
+    <AssemblyProduct>WPF.Update.Squirrel.NetFx</AssemblyProduct>
     <AssemblyCopyright>Copyright © 2019</AssemblyCopyright>
     <ApplicationIcon>..\..\Common\favicon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+      <_Parameter1>SquirrelAwareVersion</_Parameter1>
+      <_Parameter2>1</_Parameter2>
+    </AssemblyAttribute>
+  </ItemGroup>
 
   <ItemGroup>
     <Reference Include="PresentationCore" />

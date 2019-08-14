@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
 
@@ -26,6 +27,13 @@ namespace WPF.Update.Common
         {
             label.Content = $"Version: {Assembly.GetEntryAssembly().GetName().Version}\n" +
                 $"{RuntimeInformation.FrameworkDescription}";
+        }
+
+        private void ShowMessage(string text)
+        {
+            Dispatcher.Invoke((Action)(
+                () => progress.Content = text
+            ));
         }
     }
 }

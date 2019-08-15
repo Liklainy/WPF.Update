@@ -25,6 +25,7 @@
                     FontSize="20"
                     Click="ButtonCheckForUpdate_Click" />
             <Button Grid.Column="1"
+                    x:Name="runAutoUpdater"
                     Content="Run AutoUpdater"
                     FontSize="20"
                     Click="ButtonRunAutoUpdater_Click" />

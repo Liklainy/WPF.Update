@@ -40,10 +40,12 @@ namespace WPF.Update.Common
             {
                 while (true)
                 {
-                    await Task.Delay(300_000);
+                    await Task.Delay(UpdateInterval);
                     await CheckForUpdate();
                 }
             });
+
+            runAutoUpdater.IsEnabled = false;
         }
 
         private async Task CheckForUpdate()

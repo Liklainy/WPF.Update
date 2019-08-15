@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Threading;
 
 namespace WPF.Update.Common
@@ -18,12 +17,14 @@ namespace WPF.Update.Common
 
         private void ButtonRunAutoUpdater_Click(object sender, RoutedEventArgs e)
         {
-            DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromMinutes(5) };
+            DispatcherTimer timer = new DispatcherTimer { Interval = UpdateInterval };
             timer.Tick += delegate
             {
                 Update();
             };
             timer.Start();
+
+            runAutoUpdater.IsEnabled = false;
         }
 
         private void Update()

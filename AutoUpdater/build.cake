@@ -67,7 +67,9 @@ Task("Publish")
 {
     Zip($"{projectDir}/bin/{configuration}/net472", "../Build/AutoUpdater/release.zip");
     
+    CopyFile("index.html", "../Build/AutoUpdater/index.html");
     CopyFile("release.xml", "../Build/AutoUpdater/release.xml");
+
     var settings = new XmlPokeSettings
     {
         Namespaces = new Dictionary<string, string> 

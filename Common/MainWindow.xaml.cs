@@ -11,6 +11,7 @@ namespace WPF.Update.Common
     public partial class MainWindow : Window
     {
         private string UpdateUrl => "http://localhost:8000";
+        private TimeSpan UpdateInterval => TimeSpan.FromMinutes(2);
 
         public MainWindow()
         {

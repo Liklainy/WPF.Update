@@ -2,6 +2,6 @@
 <item>
   <version>1.0.0</version>
   <url>http://localhost:8000/AutoUpdater/release.zip</url>
-  <changelog></changelog>
+  <changelog>http://localhost:8000/AutoUpdater</changelog>
   <mandatory>false</mandatory>
 </item>

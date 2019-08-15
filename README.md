@@ -9,7 +9,7 @@ WPF.Update is a project to show available open source ways to deploy a WPF appli
 * [Squirrel.Windows](https://github.com/Squirrel/Squirrel.Windows)
 * [AutoUpdater.NET](https://github.com/ravibpatel/AutoUpdater.NET)
 
-### Squirrel
+### Squirrel.Windows
 ```powershell
 .\build.ps1 -script .\Squirrel\build.cake --buildVersion='1.0.0'
 ```

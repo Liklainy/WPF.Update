@@ -28,10 +28,13 @@ Files are added to zip archive
 
 ## Serve updates
 Updates must be served from `Build` folder on `http://localhost:8000`
+
 In the root directory there is a `serve.bat` which will serve static files by `python3` module
 ```powershell
 .\serve.bat
 ```
+
+[Big list of http static server one-liners](https://gist.github.com/willurd/5720255)
 
 ## Additionally Used
 * Cake

@@ -5,8 +5,8 @@ var configuration = Argument("configuration", "Release");
 var version = Argument<string>("buildVersion", "1.0.0");
 
 var projectDir = "NetFx";
-var projectPath = $"{projectDir}/WPF.Update.AutoUpdater.NetFx.csproj";
-var buildDirectory = "../Build/AutoUpdater";
+var projectPath = $"{projectDir}/WPF.Update.NetSparkle.NetFx.csproj";
+var buildDirectory = "../Build/NetSparkle";
     
 Task("Clean")
     .Does(() =>
@@ -35,7 +35,7 @@ Task("Build")
     MSBuild(projectPath, settings);
 });
 
-Task("Installer")
+Task("Release")
     .IsDependentOn("Build")
     .Does(() =>
 {
@@ -48,20 +48,20 @@ Task("Installer")
             { "PRODUCT_BUILD_DIR", buildDirectory },
         }
     });
-});
-
-Task("Release")
-    .IsDependentOn("Build")
-    .Does(() =>
-{
-    EnsureDirectoryExists(buildDirectory);
-    Zip($"{projectDir}/bin/{configuration}/net472", $"{buildDirectory}/release.zip");
     
-    CopyFile("index.html", $"{buildDirectory}/index.html");
-    CopyFile("release.xml", $"{buildDirectory}/release.xml");
+    CopyFile("release-notes.md", $"{buildDirectory}/release-notes.md");
+    CopyFile("appcast.xml", $"{buildDirectory}/appcast.xml");
 
-    XmlPoke($"{buildDirectory}/release.xml", "/item/version", version);
+    var settings = new XmlPokeSettings
+    {
+        Namespaces = new Dictionary<string, string> 
+        {
+            {"sparkle", "http://www.andymatuschak.org/xml-namespaces/sparkle"}
+        }
+    };
+    XmlPoke($"{buildDirectory}/appcast.xml",
+        "/rss/channel/item/enclosure/@sparkle:version",
+        version, settings);
 });
-
 
 RunTarget(target);

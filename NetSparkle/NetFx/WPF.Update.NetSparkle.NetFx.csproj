@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <LanguageTargets>$(MSBuildToolsPath)\Microsoft.CSharp.targets</LanguageTargets>
+    <TargetFramework>net472</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WPF.Update.NetSparkle.NetFx</RootNamespace>
+    <AssemblyName>WPF.Update.NetSparkle.NetFx</AssemblyName>
+    <AssemblyTitle>WPF.Update.NetSparkle.NetFx</AssemblyTitle>
+    <AssemblyProduct>WPF.Update.NetSparkle.NetFx</AssemblyProduct>
+    <AssemblyCopyright>Copyright © 2019</AssemblyCopyright>
+    <ApplicationIcon>..\..\Common\favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx" Generator="ResXFileCodeGenerator" LastGenOutput="Resources.Designer.cs" />
+    <Compile Update="Properties\Resources.Designer.cs" DesignTime="True" AutoGen="True" DependentUpon="Resources.resx" />
+
+    <None Update="Properties\Settings.settings" Generator="SettingsSingleFileGenerator" LastGenOutput="Settings.Designer.cs" />
+    <Compile Update="Properties\Settings.Designer.cs" DesignTime="True" AutoGen="True" DependentUpon="Settings.settings" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Include="..\..\Common\App.xaml" Link="App.xaml" />
+    <Compile Include="..\..\Common\App.xaml.cs" Link="App.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="..\..\Common\MainWindow.xaml" Link="MainWindow.xaml" />
+    <Compile Include="..\..\Common\MainWindow.xaml.cs" Link="MainWindow.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NetSparkle.New" Version="0.16.6" />
+  </ItemGroup>
+
+</Project>

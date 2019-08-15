@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AutoUpdater", "AutoUpdater"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF.Update.AutoUpdater.NetFx", "AutoUpdater\NetFx\WPF.Update.AutoUpdater.NetFx.csproj", "{89FA16AA-CFBF-4FFE-AF96-DD90C242AACD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NetSparkle", "NetSparkle", "{922EAEF8-619A-4A8A-AD17-7AA2DA8915AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF.Update.NetSparkle.NetFx", "NetSparkle\NetFx\WPF.Update.NetSparkle.NetFx.csproj", "{1F78C6E6-AC8B-41D3-B623-BA50011E13E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,10 @@ Global
 		{89FA16AA-CFBF-4FFE-AF96-DD90C242AACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89FA16AA-CFBF-4FFE-AF96-DD90C242AACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89FA16AA-CFBF-4FFE-AF96-DD90C242AACD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F78C6E6-AC8B-41D3-B623-BA50011E13E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F78C6E6-AC8B-41D3-B623-BA50011E13E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F78C6E6-AC8B-41D3-B623-BA50011E13E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F78C6E6-AC8B-41D3-B623-BA50011E13E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +40,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A754E786-D71E-48EB-A44E-099F28D3A177} = {6B2EE291-4497-4504-8EE1-BF5C63B50E53}
 		{89FA16AA-CFBF-4FFE-AF96-DD90C242AACD} = {59CA27D9-09A7-4893-9723-D8630C214C53}
+		{1F78C6E6-AC8B-41D3-B623-BA50011E13E7} = {922EAEF8-619A-4A8A-AD17-7AA2DA8915AF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F4788216-D0CA-423A-9A11-70F7DA548D78}

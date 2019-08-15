@@ -2,10 +2,11 @@
 
 var target = Argument("target", "Publish");
 var configuration = Argument("configuration", "Release");
-var version = Argument<string>("buildVersion", null);
+var version = Argument<string>("buildVersion", "1.0.0");
 
 var projectDir = "NetFx";
 var projectPath = $"{projectDir}/WPF.Update.AutoUpdater.NetFx.csproj";
+var buildDirectory = "../Build/AutoUpdater";
     
 Task("Clean")
     .Does(() =>
@@ -34,29 +35,17 @@ Task("Build")
     MSBuild(projectPath, settings);
 });
 
-Task("Package")
-    .IsDependentOn("Build")
-    .Does(() =>
-{
-    var nuGetPackSettings = new NuGetPackSettings
-    {
-        Version                 = version,
-        BasePath                = $"{projectDir}/bin/{configuration}/net472",
-        OutputDirectory         = $"{projectDir}/bin/{configuration}"
-    };
-
-    NuGetPack($"{projectDir}/WPF.Update.AutoUpdater.NetFx.nuspec", nuGetPackSettings);
-});
-
 Task("Installer")
     .IsDependentOn("Build")
     .Does(() =>
 {
+    EnsureDirectoryExists(buildDirectory);
     MakeNSIS("build_installer.nsi", new MakeNSISSettings
     {
         Defines = new Dictionary<string, string>
         {
-            { "PRODUCT_VERSION", version }
+            { "PRODUCT_VERSION", version },
+            { "PRODUCT_BUILD_DIR", buildDirectory },
         }
     });
 });
@@ -65,21 +54,13 @@ Task("Publish")
     .IsDependentOn("Build")
     .Does(() =>
 {
-    Zip($"{projectDir}/bin/{configuration}/net472", "../Build/AutoUpdater/release.zip");
+    EnsureDirectoryExists(buildDirectory);
+    Zip($"{projectDir}/bin/{configuration}/net472", $"{buildDirectory}/release.zip");
     
-    CopyFile("index.html", "../Build/AutoUpdater/index.html");
-    CopyFile("release.xml", "../Build/AutoUpdater/release.xml");
+    CopyFile("index.html", $"{buildDirectory}/index.html");
+    CopyFile("release.xml", $"{buildDirectory}/release.xml");
 
-    var settings = new XmlPokeSettings
-    {
-        Namespaces = new Dictionary<string, string> 
-        {
-            {"android", "http://schemas.android.com/apk/res/android"}
-        }
-    };
-
-    XmlPoke("../Build/AutoUpdater/release.xml",
-        "/item/version", version, settings);
+    XmlPoke($"{buildDirectory}/release.xml", "/item/version", version);
 });
 
 

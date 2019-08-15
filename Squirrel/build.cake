@@ -3,7 +3,7 @@
 
 var target = Argument("target", "Publish");
 var configuration = Argument("configuration", "Release");
-var version = Argument<string>("buildVersion", null);
+var version = Argument<string>("buildVersion", "1.0.0");
 
 var projectDir = "NetFx";
 var projectPath = $"{projectDir}/WPF.Update.Squirrel.NetFx.csproj";

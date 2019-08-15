@@ -2,7 +2,6 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "WPF.Update.AutoUpdater.NetFx"
-;!define PRODUCT_VERSION "1.0.0"
 !define PRODUCT_PUBLISHER "Liklainy"
 !define PRODUCT_WEB_SITE "https://github.com/Liklainy"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\WPF.Update.AutoUpdater.NetFx.exe"
@@ -38,7 +37,7 @@
 ; MUI end ------
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "..\Build\AutoUpdater\Setup.exe"
+OutFile "${PRODUCT_BUILD_DIR}\Setup.exe"
 InstallDir "$PROGRAMFILES\WPF.Update.AutoUpdater.NetFx"
 InstallDirRegKey HKLM "${PRODUCT_DIR_REGKEY}" ""
 ShowInstDetails show

@@ -11,8 +11,16 @@ WPF.Update is a project to show available open source ways to deploy a WPF appli
 * [NetSparkle](https://github.com/Deadpikle/NetSparkle)
 
 ### Squirrel.Windows
+
+#### NetFx
+Using C# API
 ```powershell
-.\build.ps1 -script .\Squirrel\build.cake --buildVersion='1.0.0'
+.\build.ps1 -script .\Squirrel\build.cake --framework='NetFx' --buildVersion='1.0.0'
+```
+#### Core
+Running Update.exe directly (used @MihaMarkic [solution](https://github.com/MihaMarkic/AutoMasshTik/blob/eccc8ac8b95ab32050916b6d08e1ecad280f1c4d/src/AutoMasshTik.Engine/Services/Implementation/WinAppUpdater.cs))
+```powershell
+.\build.ps1 -script .\Squirrel\build.cake --framework='Core' --buildVersion='1.0.0'
 ```
 ### AutoUpdater.NET
 AutoUpdater can update through installer or zip file

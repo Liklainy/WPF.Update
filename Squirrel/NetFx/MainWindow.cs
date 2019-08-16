@@ -15,7 +15,7 @@ namespace WPF.Update.Common
 
         private void Initialize()
         {
-            var url = $"{UpdateUrl}/Squirrel";
+            var url = $"{UpdateUrl}/Squirrel/NetFx";
             _currentVersion = Assembly.GetEntryAssembly().GetName().Version.ToString();
             _updateManager = new UpdateManager(url, urlDownloader: new FileDownloader());
 
@@ -52,7 +52,7 @@ namespace WPF.Update.Common
         {
             try
             {
-                ShowMessage($"Checking new versions...");
+                ShowMessage("Checking new versions...");
                 var update = await _updateManager.CheckForUpdate(false, x => ShowMessage($"Checking updates: {x}%"));
                 try
                 {

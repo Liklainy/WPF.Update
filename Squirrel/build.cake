@@ -3,11 +3,13 @@
 
 var target = Argument("target", "Publish");
 var configuration = Argument("configuration", "Release");
+var framework = Argument("framework", "NetFx");
 var version = Argument<string>("buildVersion", "1.0.0");
 
-var projectDir = "NetFx";
-var projectPath = $"{projectDir}/WPF.Update.Squirrel.NetFx.csproj";
-var assemblyName = "WPF.Update.Squirrel.NetFx";
+
+var projectDir = $"{framework}";
+var assemblyName = $"WPF.Update.Squirrel.{framework}";
+var projectPath = $"{projectDir}/{assemblyName}.csproj";
     
 Task("Clean")
     .Does(() =>
@@ -28,12 +30,27 @@ Task("Build")
     .IsDependentOn("Restore")
     .Does(() =>
 {
-    var settings = new MSBuildSettings
+    Func<ProcessArgumentBuilder, ProcessArgumentBuilder> argsCustomization =
+        args => args.Append("/p:Version=" + version);
+    switch(framework)
     {
-        Configuration = configuration,
-        ArgumentCustomization = args => args.Append("/p:Version=" + version)
-    };
-    MSBuild(projectPath, settings);
+        case "NetFx":
+            MSBuild(projectPath,
+                new MSBuildSettings
+                {
+                    Configuration = configuration,
+                    ArgumentCustomization = argsCustomization
+                });
+            break;
+        case "Core":
+            DotNetCoreBuild(projectPath,
+                new DotNetCoreBuildSettings
+                {
+                    Configuration = configuration,
+                    ArgumentCustomization = argsCustomization
+                });
+            break;
+    }
 });
 
 Task("Package")
@@ -43,11 +60,11 @@ Task("Package")
     var nuGetPackSettings = new NuGetPackSettings
     {
         Version                 = version,
-        BasePath                = $"{projectDir}/bin/{configuration}/net472",
+        BasePath                = $"{projectDir}/bin/{configuration}",
         OutputDirectory         = $"{projectDir}/bin/{configuration}"
     };
 
-    NuGetPack($"{projectDir}/WPF.Update.Squirrel.NetFx.nuspec", nuGetPackSettings);
+    NuGetPack($"{projectDir}/{assemblyName}.nuspec", nuGetPackSettings);
 });
 
 Task("Publish")
@@ -58,7 +75,8 @@ Task("Publish")
     Information($"Publish: {nupgk}");
     var settings = new SquirrelSettings
     {
-        ReleaseDirectory = $"../Build/Squirrel"
+        NoMsi = true,
+        ReleaseDirectory = $"../Build/Squirrel/{framework}"
     };
     Squirrel(nupgk, settings);
 });

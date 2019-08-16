@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <RootNamespace>WPF.Update.Squirrel.Core</RootNamespace>
+    <AssemblyName>WPF.Update.Squirrel.Core</AssemblyName>
+    <AssemblyTitle>WPF.Update.Squirrel.Core</AssemblyTitle>
+    <AssemblyProduct>WPF.Update.Squirrel.Core</AssemblyProduct>
+    <AssemblyCopyright>Copyright © 2019</AssemblyCopyright>
+    <ApplicationIcon>..\..\Common\favicon.ico</ApplicationIcon>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Include="..\..\Common\App.xaml" Link="App.xaml" />
+    <Compile Include="..\..\Common\App.xaml.cs" Link="App.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="..\..\Common\MainWindow.xaml" Link="MainWindow.xaml" />
+    <Compile Include="..\..\Common\MainWindow.xaml.cs" Link="MainWindow.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+
+</Project>

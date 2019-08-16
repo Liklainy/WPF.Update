@@ -1,7 +1,9 @@
-if not exist "Build" mkdir Build
-if not exist "Build\AutoUpdater" mkdir Build\AutoUpdater
-if not exist "Build\Squirrel" mkdir Build\Squirrel
-if not exist "Build\NetSparkle" mkdir Build\NetSparkle
+md ^
+    Build\Squirrel\NetFx^
+    Build\Squirrel\Core^
+    Build\AutoUpdater^
+    Build\NetSparkle^
+    2> NUL
 
 cd Build
 
